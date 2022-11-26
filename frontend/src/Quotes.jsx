@@ -1,19 +1,18 @@
-import axios from "axios";
 import React, {useState} from "react";
+import axios from "axios";
 
 function Quotes() {
-  const [ text, setText] = useState("");
+  const [text, setText] = useState("");
   const [author, setAuthor] = useState("");
 
   function getQuote() {
-    // make our HTTP request to our backend
-    axios.get("http://localhost:5000/", {crossdomain: true})
-    .then(response => {
-      // Get object from response.data
+    axios.get("http://localhost:5000/",  { crossdomain: true }).then(response => {
+      console.log(response.data);
       setText(response.data.text);
       setAuthor(response.data.author);
     });
   }
+
 
   return (
     <div> 
